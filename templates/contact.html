@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - CryptoSwapSafe{% endblock %}
+
+{% block content %}
+<!-- Contact Section -->
+<section class="py-12">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8 text-center gradient-text">Contact Us</h1>
+        
+        <!-- PGP Key Card -->
+        <div class="card mb-8">
+            <div class="card-header bg-gray-800/50 border-b border-gray-700 p-4">
+                <h2 class="text-xl font-semibold text-white">PGP Public Key</h2>
+            </div>
+            <div class="card-body p-6">
+                <div class="bg-gray-900 p-4 rounded-lg border border-gray-700 overflow-x-auto">
+                    <pre class="text-xs text-gray-300 font-mono whitespace-pre-wrap">-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+xjMEZRYUEhYJKwYBBAHaRw8BAQdAAxo/14LRhrG3CwAhVl5rcilo3jNbvd+nTAax
+k1vb2nbNH2VYY2ggQWRtaW4gTWFpbCA8YWRtaW5AZXhjaC5jeD7CiQQTFggAMRYh
+BARJBRfZoJK3K5L1xv90tuSC4uq3BQJlFhQSAhsDBAsJCAcFFQgJCgsFFgIDAQAA
+CgkQ/3S25ILi6rep2AEA0thEzI0D6Uf8FtXlFaJYNb9MHNeGwyYMN++wW628q6AA
+/1Lpf/QTvPskvYIkDbMpYyQ64/rQ7I3z3nBlGdSQd3wNzjgEZRYUEhIKKwYBBAGX
+VQEFAQEHQHU9E+s5n1lGaw8LvpznVagKc1REyc0dWsgyafBnlsZ6AwEIB8J4BBgW
+CAAgFiEEBEkFF9mgkrcrkvXG/3S25ILi6rcFAmUWFBICGwwACgkQ/3S25ILi6rfa
+DQD/fS/lYJFpQ83mJfT/x7ELeRONgoqFcJgaknuG1PPqEMQA/08iR9HmoMcthe8J
+rED9aoichv0Lnih3obG1Tr60dpkC
+=ttE1
+-----END PGP PUBLIC KEY BLOCK-----</pre>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Why No Telegram Card -->
+        <div class="card">
+            <div class="card-header bg-gray-800/50 border-b border-gray-700 p-4">
+                <h2 class="text-xl font-semibold text-white">Why no Telegram?</h2>
+            </div>
+            <div class="card-body p-6">
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-gray-300">Our communications framework consists mainly of desktop applications and Telegram doesn't support end-to-end encryption ("Secret Chats") in their desktop app since the initial release, thus we consider transmission of payment and other private data via Telegram insecure, including using bots and standard chats, since neither of them support end-to-end encryption.</p>
+                    
+                    <p class="text-gray-300 mt-2">We do not use mobile devices due to risks associated with a wide exposure of manufactory supply chains to hardware backdoors. More details can be found here <a href="https://github.com/marcovelon/tdesktop/blob/NoSecretChats/README.md" target="_blank" class="text-blue-400 hover:text-blue-300">https://github.com/marcovelon/tdesktop/blob/NoSecretChats/README.md</a> and in the following discussion <a href="https://github.com/marcovelon/tdesktop/issues/2" target="_blank" class="text-blue-400 hover:text-blue-300">https://github.com/marcovelon/tdesktop/issues/2</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

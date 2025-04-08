@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+
+{% block title %}FAQ{% endblock %}
+
+{% block content %}
+<section class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-8 text-center text-blue-300">FAQ</h1>
+
+        <div class="glass-effect p-6 rounded-lg shadow-glow mb-8">
+            <div class="bg-gray-900/50 p-4 rounded-lg mb-6">
+                <h2 class="text-xl font-bold text-white mb-4">Questions & Answers</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="#cryptocurrencies_supported" class="text-blue-400 hover:underline">What are cryptocurrencies you support?</a>
+                    <a href="#liquidity_providers_reserves" class="text-blue-400 hover:underline">Who are your liquidity providers? Can you proof your reserves?</a>
+                    <a href="#how_exchanges_are_performed" class="text-blue-400 hover:underline">How exchanges are performed?</a>
+                    <a href="#is_kyc_required" class="text-blue-400 hover:underline">Do you need any documents from me in order to exchange?</a>
+                    <a href="#onion_address" class="text-blue-400 hover:underline">What is your .onion address?</a>
+                    <a href="#data_collection" class="text-blue-400 hover:underline">Do you collect any client metadata (browser info, IP, etc)?</a>
+                    <a href="#are_you_a_legal_entity" class="text-blue-400 hover:underline">Are you a registered entity?</a>
+                    <a href="#affiliation_program" class="text-blue-400 hover:underline">Do you have an affiliation program?</a>
+                    <a href="#aggregation" class="text-blue-400 hover:underline">What is aggregation?</a>
+                    <a href="#bitcoin_fee_modes" class="text-blue-400 hover:underline">Why my Bitcoin order payout is taking so long to confirm?</a>
+                    <a href="#monero_order_issue" class="text-blue-400 hover:underline">Why my Monero order is taking so long to be paid?</a>
+                    <a href="#btcln_known_issues" class="text-blue-400 hover:underline">Why my Bitcoin Lightning order is in the error state?</a>
+                    <a href="#why_no_telegram" class="text-blue-400 hover:underline">Why no Telegram?</a>
+                    <a href="#wallet_security_recommendations" class="text-blue-400 hover:underline">Any wallet recommendations?</a>
+                </div>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="bg-gray-900/50 p-4 rounded-lg" id="cryptocurrencies_supported">
+                    <h3 class="text-lg font-medium text-white mb-3">What are cryptocurrencies you support?</h3>
+                    <div class="border-l-2 border-blue-500 pl-4">
+                        <p class="text-gray-300">Litecoin, Bitcoin, Monero, Dash, Ethereum and Ethereum's ERC-20 tokens</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg" id="liquidity_providers_reserves">
+                    <h3 class="text-lg font-medium text-white mb-3">Who are your liquidity providers? Can you proof your reserves?</h3>
+                    <div class="border-l-2 border-blue-500 pl-4">
+                        <p class="text-gray-300">We do not use any third-party liquidity providers and all our reserves belong to us, allocated on our nodes. We can provide a proof of reserves on request.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg" id="how_exchanges_are_performed">
+                    <h3 class="text-lg font-medium text-white mb-3">How exchanges are performed?</h3>
+                    <div class="border-l-2 border-blue-500 pl-4">
+                        <p class="text-gray-300">We generate a one-time input address exclusively for you. Once you transfer the required amount to it and it gets confirmed, you will receive the cryptocurrency purchased.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg" id="is_kyc_required">
+                    <h3 class="text-lg font-medium text-white mb-3">Do you need any documents from me in order to exchange?</h3>
+                    <div class="border-l-2 border-blue-500 pl-4">
+                        <p class="text-gray-300">No. We are a non-KYC exchange. We also never require SoF.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg" id="onion_address">
+                    <h3 class="text-lg font-medium text-white mb-3">What is your .onion address?</h3>
+                    <div class="border-l-2 border-blue-500 pl-4">
+                        <p class="text-gray-300">http://hszyoqwrcp7cxlxnqmovp6vjvmnwj33g4wviuxqzq47emieaxjaperyd.onion</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg" id="data_collection">
+                    <h3 class="text-lg font-medium text-white mb-3">Do you collect any client metadata (browser info, IP, etc)?</h3>
+                    <div class="border-l-2 border-blue-500 pl-4">
+                        <p class="text-gray-300">We don't collect any metadata.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg" id="are_you_a_legal_entity">
+                    <h3 class="text-lg font-medium text-white mb-3">Are you a registered entity?</h3>
+                    <div class="border-l-2 border-blue-500 pl-4">
+                        <p class="text-gray-300">We are a company registered in Belize.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg" id="affiliation_program">
+                    <h3 class="text-lg font-medium text-white mb-3">Do you have an affiliation program?</h3>
+                    <div class="border-l-2 border-blue-500 pl-4">
+                        <p class="text-gray-300">Yes, follow <a href="/affiliation" class="text-blue-400 hover:underline">this link</a> to participate.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg" id="aggregation">
+                    <h3 class="text-lg font-medium text-white mb-3">What is aggregation?</h3>
+                    <div class="border-l-2 border-blue-500 pl-4">
+                        <p class="text-gray-300 mb-4">We operate with two pools of addresses for BTC deposits and transfers - mixed and aggregated. In a mixed pool all received and sent transactions are mixed together and there is no way to discover how many people are behind certain addresses and traceability is extremely difficult, which is very good for privacy but bad for risk scoring. In the aggregated pool all transactions we receive from users are collected on a known single address which is also used to send payments, what will clearly show you have interacted with our exchange and it's good for interacting with other major exchanges to avoid any risks of frozen funds.</p>
+                        
+                        <p class="text-gray-300 mb-2">These are cons and pros of each pool:</p>
+                        
+                        <div class="bg-gray-800/50 p-3 rounded-lg mb-4">
+                            <h4 class="text-white font-medium mb-2">Aggregated pool</h4>
+                            <div class="border-l-2 border-green-500 pl-3 mb-3">
+                                <p class="text-gray-300 mb-1"><strong class="text-green-500">Pros:</strong></p>
+                                <ul class="list-disc list-inside text-gray-300 ml-4">
+                                    <li>No risks of being frozen at major exchanges due to low risk score given by chain analysis platforms</li>
+                                    <li>Currently accepted by the following exchanges without any issues: Binance, Coinbase, Gate.io, HTX, Kraken, Gemini, OKX, Kucoin, Poloniex (this list is being reviewed daily).</li>
+                                </ul>
+                            </div>
+                            <div class="border-l-2 border-red-500 pl-3">
+                                <p class="text-gray-300 mb-1"><strong class="text-red-500">Cons:</strong></p>
+                                <ul class="list-disc list-inside text-gray-300 ml-4">
+                                    <li>None</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-800/50 p-3 rounded-lg">
+                            <h4 class="text-white font-medium mb-2">Mixed pool</h4>
+                            <div class="border-l-2 border-green-500 pl-3 mb-3">
+                                <p class="text-gray-300 mb-1"><strong class="text-green-500">Pros:</strong></p>
+                                <ul class="list-disc list-inside text-gray-300 ml-4">
+                                    <li>Strong privacy</li>
+                                    <li>Nearly impossible traceability of funds by chain analysis platforms</li>
+                                    <li>P2P-alike</li>
+                                </ul>
+                            </div>
+                            <div class="border-l-2 border-red-500 pl-3">
+                                <p class="text-gray-300 mb-1"><strong class="text-red-500">Cons:</strong></p>
+                                <ul class="list-disc list-inside text-gray-300 ml-4">
+                                    <li>High risks of frozen funds at major exchanges due to high risk score given by chain analysis platforms</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg" id="bitcoin_fee_modes">
+                    <h3 class="text-lg font-medium text-white mb-3">Why my Bitcoin order payout is taking so long to confirm?</h3>
+                    <div class="border-l-2 border-blue-500 pl-4">
+                        <p class="text-gray-300 mb-2">If you have selected the <strong>slow</strong> (or "free") fee mode during the order creation, we have sent Bitcoin to you and used the lowest possible mining fee so you don't have to pay it. The confirmation of a such transaction might vary from 12 hours to around a week, depending on the current mempool workload on the Bitcoin network.</p>
+                        <p class="text-gray-300 mb-2">You can speed it up by using your wallet's <strong>CPFP</strong> functionality. Since the unconfirmed transaction we have sent to you is spendable, you can spend it with a higher fee to incentivize confirmation of both transactions, which is the most simple way to get it included into the blockchain.</p>
+                        <p class="text-gray-300">We recommend using the <strong>quick</strong> fee mode if you need your transaction confirmed fast, but we will charge you the blockchain mining fee.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg" id="monero_order_issue">
+                    <h3 class="text-lg font-medium text-white mb-3">Why my Monero order is taking so long to be paid?</h3>
+                    <div class="border-l-2 border-blue-500 pl-4">
+                        <p class="text-gray-300">Due to the fact we are using a single wallet for all incoming and outgoing Monero payments and its protocol limitations of UTXOs being spendable strictly after 10 confirmations, multiple orders involving Monero within our system may cause delay to your order, since we are only able to process one order once a UTXO from a previous order is fully confirmed.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg" id="btcln_known_issues">
+                    <h3 class="text-lg font-medium text-white mb-3">Why my Bitcoin Lightning order is in the error state?</h3>
+                    <div class="border-l-2 border-blue-500 pl-4">
+                        <p class="text-gray-300 mb-2">Bitcoin Lightning (also BTCLN or LN) network is a very dynamic system in its early development stage still but evolving rapidly. Sometimes the payout of your invoice may fail due to a variety of reasons and some of them are known:</p>
+                        <ul class="list-disc list-inside text-gray-300 ml-4 mb-2">
+                            <li><strong>Android battery management killing the app's network:</strong> If you use a mobile wallet such as Phoenix or Wallet of Satoshi, please ensure your app is open in the foreground during the payment attempt of your invoice. There is a known issue that if the app is sent to background, Android's batery optimization engine may restrict the app's network access in order to increase battery life, which will make your app unable to receive payments. Ensure your app is either <strong>(a)</strong> open in the foreground or <strong>(b)</strong> you configure your OS to exclude that app from Android's battery optimization.</li>
+                            <li><strong>Lack of inbound liquidity</strong>: Ensure your wallet is currently capable of receiving payments and has enough inbound liquidity.</li>
+                        </ul>
+                        <p class="text-gray-300">If you still have issues, you can ask us for help by mentioning your wallet's software name.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg" id="why_no_telegram">
+                    <h3 class="text-lg font-medium text-white mb-3">Why no Telegram?</h3>
+                    <div class="border-l-2 border-blue-500 pl-4">
+                        <p class="text-gray-300 mb-2">Our communications framework consists mainly of desktop applications and Telegram doesn't support end-to-end encryption ("Secret Chats") in their desktop app since the initial release, thus we consider transmission of payment and other private data via Telegram insecure, including using bots and standard chats, since neither of them support end-to-end encryption. We do not use mobile devices due to risks associated with a wide exposure of manufacture supply chains to hardware backdoors. More details can be found here <a target="_blank" href="https://github.com/marcovelon/tdesktop/blob/NoSecretChats/README.md" class="text-blue-400 hover:underline">https://github.com/marcovelon/tdesktop/blob/NoSecretChats/README.md</a> and in the following discussion <a target="_blank" href="https://github.com/marcovelon/tdesktop/issues/2" class="text-blue-400 hover:underline">https://github.com/marcovelon/tdesktop/issues/2</a></p>
+                        <p class="text-gray-300 mt-3 text-sm"><strong class="text-red-500">WARNING:</strong> <strong>We strictly recommend against usage of Telegram bots for making exchange operations</strong>, because Telegram bots do not have any end-to-end encryption capabilities thus all your interactions with them are stored in the plain text on Telegram servers, available for data extraction any time later. Any service offering you swap operations via a Telegram bot has no understanding of security implications of a such service and most probably doesn't care about your privacy or possible consequences. Telegram actively cooperate with the law enforcement.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg" id="wallet_security_recommendations">
+                    <h3 class="text-lg font-medium text-white mb-3">Any wallet recommendations?</h3>
+                    <div class="border-l-2 border-blue-500 pl-4">
+                        <div class="mb-4">
+                            <h4 class="text-white font-medium mb-2">Desktop</h4>
+                            <ul class="list-disc list-inside text-gray-300 ml-4">
+                                <li><a target="_blank" href="https://electrum.org" class="text-blue-400 hover:underline">Electrum</a> (BTC), <a target="_blank" href="https://electrum-ltc.org" class="text-blue-400 hover:underline">Electrum-LTC</a> (LTC)</li>
+                                <li><a target="_blank" href="https://sparrowwallet.com" class="text-blue-400 hover:underline">Sparrow</a> (BTC)</li>
+                                <li><a target="_blank" href="https://featherwallet.org" class="text-blue-400 hover:underline">Feather</a> (XMR)</li>
+                                <li><a target="_blank" href="https://download.mycrypto.com" class="text-blue-400 hover:underline">MyCrypto</a> (ETH + ERC20)</li>
+                                <li><a target="_blank" href="https://github.com/mmgen/mmgen-wallet" class="text-blue-400 hover:underline">MMGen</a> (BTC, LTC, XMR, ETH + ERC20)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h4 class="text-white font-medium mb-2">Mobile</h4>
+                            <ul class="list-disc list-inside text-gray-300 ml-4">
+                                <li><a target="_blank" href="https://f-droid.org/en/packages/io.horizontalsystems.bankwallet" class="text-blue-400 hover:underline">Unstoppable Wallet on F-Droid</a> (BTC, LTC, DASH, ETH + ERC20)</li>
+                                <li><a target="_blank" href="https://f-droid.org/en/packages/org.electrum.electrum/" class="text-blue-400 hover:underline">Electrum on F-Droid</a> (BTC, LN)</li>
+                                <li><a target="_blank" href="https://f-droid.org/packages/eth.brume.wallet/" class="text-blue-400 hover:underline">Brume Wallet on F-Droid</a> (ETH)</li>
+                            </ul>
+                        </div>
+                        
+                        <p class="text-gray-300 mb-4 text-sm"><strong class="text-red-500">WARNING:</strong> We do not recommend any mobile wallets that are not included into the official F-Droid repository. Projects that do not have technical capabilities to accomplish the inclusion criteria or simply avoiding doing so should be considered risky. The main purpose of being included to F-Droid is to ensure the compiled binaries are built from the current release source code without any modifications, because any project included to F-Droid is compiled by F-Droid's infrastructure and not by the project's team that can be compromised any time (this concept is called "reproducible builds").</p>
+                        
+                        <div class="mb-4">
+                            <h4 class="text-white font-medium mb-2">Browser</h4>
+                            <ul class="list-disc list-inside text-gray-300 ml-4">
+                                <li><a target="_blank" href="https://www.enkrypt.com" class="text-blue-400 hover:underline">Enkrypt</a> (ETH + ERC20)</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-white font-medium mb-2">Hardware</h4>
+                            <ul class="list-disc list-inside text-gray-300 ml-4">
+                                <li><a target="_blank" href="https://foundationdevices.com" class="text-blue-400 hover:underline">Foundation Passport</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Link -->
+        <div class="mt-8 text-center">
+            <p class="text-gray-300">Still have questions? <a href="{{ url_for('contact') }}" class="text-blue-400 hover:underline">Contact our support team</a>.</p>
+        </div>
+    </div>
+</section>
+{% endblock %} 

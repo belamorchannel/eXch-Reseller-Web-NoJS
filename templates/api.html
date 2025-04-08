@@ -1,0 +1,246 @@
+{% extends "base.html" %}
+
+{% block title %}API{% endblock %}
+
+{% block content %}
+<section class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+        <h1 class="text-3xl font-bold mb-8 text-center text-blue-300">API Documentation</h1>
+        
+        <div class="glass-effect p-6 rounded-lg shadow-glow mb-8">
+            <h2 class="text-xl font-bold text-white mb-4">API information</h2>
+            
+            <div class="bg-gray-900/50 p-4 rounded-lg mb-6">
+                <h3 class="text-lg font-medium text-white mb-3">General information</h3>
+                <p class="text-gray-300 mb-2">This API accepts both GET and POST requests.</p>
+                <p class="text-gray-300 mb-2">Request parameters are standard HTTP parameters</p>
+                <p class="text-gray-300 mb-2">Response parameters are in JSON format</p>
+                <p class="text-gray-300 mb-2">API main endpoint: <code class="text-blue-400">https://exch.net/api</code></p>
+                <p class="text-gray-300 mb-2">An API key (api_key parameter) might be required for each endpoint if the service is under abnormal load. Contact <a href="mailto:support@exch.cx" class="text-blue-400 hover:underline">support@exch.cx</a> or create a support ticket to request an API key.</p>
+                <p class="text-gray-300">Rates in a standartized XML format are available at <code class="text-blue-400">https://exch.net/rates.xml</code></p>
+            </div>
+            
+            <div class="space-y-8">
+                <div class="bg-gray-900/50 p-4 rounded-lg">
+                    <h3 class="text-lg font-medium text-white mb-3">/api/rates - Get exchange rates</h3>
+                    <div class="border-l-2 border-blue-500 pl-4 mb-3">
+                        <p class="text-gray-300 mb-2"><strong>Request parameters</strong></p>
+                        <p class="text-gray-300">rate_mode - Rate mode - flat or dynamic (Optional; Default: dynamic)</p>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-4">
+                        <p class="text-gray-300 mb-2"><strong>Response parameters</strong></p>
+                        <p class="text-gray-300 mb-2">Represents a nested object with keys for exchange symbols in the following format: FROMCURRENCY_TOCURRENCY; for example, the rate for Bitcoin/Litecoin will have the following key: BTC_LTC</p>
+                        <p class="text-gray-300 mb-2">Each symbol is an object with the following parameters:</p>
+                        <ul class="list-disc list-inside text-gray-300 ml-4">
+                            <li>rate - Exchange rate with fee (includes a service fee of the chosen rate_mode)</li>
+                            <li>svc_fee - Service fee for selected rate_mode</li>
+                            <li>rate_mode - Selected rate_mode</li>
+                            <li>reserve - Total reserve of the currency to receive (the amount this exchange service is capable of sending)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg">
+                    <h3 class="text-lg font-medium text-white mb-3">/api/volume - Get 24 hours volume for each currency</h3>
+                    <div class="border-l-2 border-blue-500 pl-4 mb-3">
+                        <p class="text-gray-300 mb-2"><strong>Request parameters</strong></p>
+                        <p class="text-gray-300">None</p>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-4 mb-3">
+                        <p class="text-gray-300 mb-2"><strong>Response parameters</strong></p>
+                        <p class="text-gray-300 mb-2">A JSON object containing the following parameters for each element:</p>
+                        <p class="text-gray-300">volume - 24h volume (inbound and outbound)</p>
+                    </div>
+                    <div class="border-l-2 border-yellow-500 pl-4">
+                        <p class="text-gray-300 mb-2"><strong>Additional note</strong></p>
+                        <p class="text-gray-300">We do not export per-pair volumes for privacy reasons (mainly to harden traceability of our exchanges)</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg">
+                    <h3 class="text-lg font-medium text-white mb-3">/api/status - Get status for each network</h3>
+                    <div class="border-l-2 border-blue-500 pl-4 mb-3">
+                        <p class="text-gray-300 mb-2"><strong>Request parameters</strong></p>
+                        <p class="text-gray-300">None</p>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-4">
+                        <p class="text-gray-300 mb-2"><strong>Response parameters</strong></p>
+                        <ul class="list-disc list-inside text-gray-300 ml-4">
+                            <li>status - Node status - online or offline</li>
+                            <li>aggregated_balance - Aggregated pool balance (for BTC only)</li>
+                            <li>mixed_balance - Mixed pool balance (for BTC only)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg">
+                    <h3 class="text-lg font-medium text-white mb-3">/api/create - Create a new exchange order</h3>
+                    <div class="border-l-2 border-blue-500 pl-4 mb-3">
+                        <p class="text-gray-300 mb-2"><strong>Request parameters</strong></p>
+                        <ul class="list-disc list-inside text-gray-300 ml-4">
+                            <li>from_currency - Currency to send</li>
+                            <li>to_currency - Currency to receive</li>
+                            <li>to_address - Address for to_currency</li>
+                            <li>refund_address - Refund address for from_currency, needed when an exchange fails (Optional; possible to provide during REFUND_REQUEST state)</li>
+                            <li>rate_mode - Rate mode - flat or dynamic (Optional; Default: dynamic)</li>
+                            <li>ref - Referrer ID (Optional)</li>
+                            <li>fee_option - Network fee option - s for slow, m for medium, f for quick (Optional; Default: f; Used only when to_currency is BTC,ETH,DAI,USDC or USDT )</li>
+                            <li>aggregation - BTC aggregation pool - yes for aggregated (receive and send), no for mixed (receive and send), any for any (send only) (Optional; Default: yes when from_currency is BTC, any when to_currency is BTC)</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-4">
+                        <p class="text-gray-300 mb-2"><strong>Response parameters</strong></p>
+                        <p class="text-gray-300">orderid - Exchange order ID for /api/order</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg">
+                    <h3 class="text-lg font-medium text-white mb-3">/api/order - Get an exchange order information and state</h3>
+                    <div class="border-l-2 border-blue-500 pl-4 mb-3">
+                        <p class="text-gray-300 mb-2"><strong>Request parameters</strong></p>
+                        <p class="text-gray-300">orderid - Exchange order ID created by /api/create</p>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-4">
+                        <p class="text-gray-300 mb-2"><strong>Response parameters</strong></p>
+                        <ul class="list-disc list-inside text-gray-300 ml-4">
+                            <li>created - Order creation timestamp</li>
+                            <li>state - Current state of the exchange, possible values: CREATED, CANCELLED, AWAITING_INPUT, CONFIRMING_INPUT, EXCHANGING, FUNDED, BRIDGING, CONFIRMING_SEND, COMPLETE, REFUND_REQUEST, REFUND_PENDING, CONFIRMING_REFUND, REFUNDED</li>
+                            <li>from_currency - Currency to send</li>
+                            <li>from_addr - Address for from_currency (this address should be deposited in order to initiate the exchange)</li>
+                            <li>to_currency - Currency to receive</li>
+                            <li>to_address - Address for to_currency</li>
+                            <li>rate_mode - Rate mode (flat or dynamic)</li>
+                            <li>rate - Current rate</li>
+                            <li>svc_fee - Service fee (included in the calculated amount of to_currency)</li>
+                            <li>network_fee - Network fee (included in the calculated amount of to_currency)</li>
+                            <li>from_amount_received - Amount of from_currency received (null when no amount received yet)</li>
+                            <li>to_amount - Amount of to_currency to be sent (null when no amount received yet)</li>
+                            <li>wallet_pool - Selected wallet pool (currently only supported when to_currency is BTC) - aggregated for aggregated, mixed for mixed, any for all available</li>
+                            <li>transaction_id_received - Transaction ID for from_currency received (null when no amount received yet)</li>
+                            <li>transaction_id_sent - Transaction ID for to_currency sent (null when exchange not finished yet)</li>
+                            <li>refund_private_key - Private key in case an ETH token is refunded in the REFUNDED state (when from_currency is one of USDC, DAI, USDT)</li>
+                            <li>min_input - Minimum amount of from_currency to deposit</li>
+                            <li>max_input - Maximum amount of from_currency to deposit</li>
+                            <li>state_error - Current error state, if any (only present on error)</li>
+                            <li>refund_available - Refund user action availability for the current state of the order (Boolean)</li>
+                            <li>orderid - Exchange order ID</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg">
+                    <h3 class="text-lg font-medium text-white mb-3">/api/order/fetch_guarantee - Fetch Letter of Guarantee for an order</h3>
+                    <div class="border-l-2 border-blue-500 pl-4 mb-3">
+                        <p class="text-gray-300 mb-2"><strong>Request parameters</strong></p>
+                        <p class="text-gray-300">orderid - Exchange order ID created by /api/create</p>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-4">
+                        <p class="text-gray-300 mb-2"><strong>Response parameters</strong></p>
+                        <p class="text-gray-300">The response is a file containing a Letter of Guarantee signed with the address 1P59vP5TNXAFRnQJvZSkwhYXejYW3teXch</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg">
+                    <h3 class="text-lg font-medium text-white mb-3">/api/order/refund - Request a refund for an order if available</h3>
+                    <div class="border-l-2 border-blue-500 pl-4 mb-3">
+                        <p class="text-gray-300 mb-2"><strong>Request parameters</strong></p>
+                        <p class="text-gray-300">orderid - Exchange order ID created by /api/create</p>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-4">
+                        <p class="text-gray-300 mb-2"><strong>Response parameters</strong></p>
+                        <ul class="list-disc list-inside text-gray-300 ml-4">
+                            <li>result - true for a successful request, false for a failed request (Boolean)</li>
+                            <li>error - Error message in case the request failed</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg">
+                    <h3 class="text-lg font-medium text-white mb-3">/api/order/refund_confirm - Confirm a refund and provide a refund address if required (only when the order's state is REFUND_REQUEST)</h3>
+                    <div class="border-l-2 border-blue-500 pl-4 mb-3">
+                        <p class="text-gray-300 mb-2"><strong>Request parameters</strong></p>
+                        <ul class="list-disc list-inside text-gray-300 ml-4">
+                            <li>orderid - Exchange order ID created by /api/create</li>
+                            <li>refund_address - Address for from_currency to send a refund</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-4">
+                        <p class="text-gray-300 mb-2"><strong>Response parameters</strong></p>
+                        <ul class="list-disc list-inside text-gray-300 ml-4">
+                            <li>result - true for a successful request, false for a failed request (Boolean)</li>
+                            <li>error - Error message in case the request failed</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg">
+                    <h3 class="text-lg font-medium text-white mb-3">/api/order/revalidate_address - Revalidate a new address when the order's state_error is TO_ADDRESS_INVALID</h3>
+                    <div class="border-l-2 border-blue-500 pl-4 mb-3">
+                        <p class="text-gray-300 mb-2"><strong>Request parameters</strong></p>
+                        <ul class="list-disc list-inside text-gray-300 ml-4">
+                            <li>orderid - Exchange order ID created by /api/create</li>
+                            <li>to_address - Address for to_currency</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-4">
+                        <p class="text-gray-300 mb-2"><strong>Response parameters</strong></p>
+                        <ul class="list-disc list-inside text-gray-300 ml-4">
+                            <li>result - true for a successful request, false for a failed request (Boolean)</li>
+                            <li>error - Error message in case the request failed</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg">
+                    <h3 class="text-lg font-medium text-white mb-3">/api/order/remove - Remove the order's data immediately (only when the order's state is COMPLETE)</h3>
+                    <div class="border-l-2 border-blue-500 pl-4 mb-3">
+                        <p class="text-gray-300 mb-2"><strong>Request parameters</strong></p>
+                        <p class="text-gray-300">orderid - Exchange order ID created by /api/create</p>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-4">
+                        <p class="text-gray-300 mb-2"><strong>Response parameters</strong></p>
+                        <ul class="list-disc list-inside text-gray-300 ml-4">
+                            <li>result - true for a successful request, false for a failed request (Boolean)</li>
+                            <li>error - Error message in case the request failed</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg">
+                    <h3 class="text-lg font-medium text-white mb-3">/api/order/support_message - Send a message to the in-order support chat</h3>
+                    <div class="border-l-2 border-blue-500 pl-4 mb-3">
+                        <p class="text-gray-300 mb-2"><strong>Request parameters</strong></p>
+                        <ul class="list-disc list-inside text-gray-300 ml-4">
+                            <li>orderid - Exchange order ID created by /api/create</li>
+                            <li>supportmessage - Message</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-4">
+                        <p class="text-gray-300 mb-2"><strong>Response parameters</strong></p>
+                        <ul class="list-disc list-inside text-gray-300 ml-4">
+                            <li>result - true for a successful request, false for a failed request (Boolean)</li>
+                            <li>error - Error message in case the request failed</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-4 rounded-lg">
+                    <h3 class="text-lg font-medium text-white mb-3">/api/order/support_messages - Get in-order support chat messages</h3>
+                    <div class="border-l-2 border-blue-500 pl-4 mb-3">
+                        <p class="text-gray-300 mb-2"><strong>Request parameters</strong></p>
+                        <p class="text-gray-300">orderid - Exchange order ID created by /api/create</p>
+                    </div>
+                    <div class="border-l-2 border-green-500 pl-4">
+                        <p class="text-gray-300 mb-2"><strong>Response parameters</strong></p>
+                        <p class="text-gray-300">A json array with messages containing timestamp, sender, message and read_by_support (if the message's sender is USER) for each element</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-8 text-center">
+            <p class="text-gray-300">Need help with API integration? <a href="{{ url_for('contact') }}" class="text-blue-400 hover:underline">Contact our support team</a>.</p>
+        </div>
+    </div>
+</section>
+{% endblock %} 
