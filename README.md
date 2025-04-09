@@ -1,3 +1,5 @@
+Tailwind, css, html, flask, no JS
+![{F3F66624-ADB7-48E6-82CF-D7F1B893C4EB}](https://github.com/user-attachments/assets/11709fa2-635b-49d2-87e0-08b7b2026369)
 
 ```
 git clone https://github.com/belamorchannel/eXch-Reseller-Web-NoJS.git
